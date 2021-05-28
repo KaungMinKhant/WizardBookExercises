@@ -34,6 +34,11 @@
 ;I can't test for small numbers since it only returns 0 for me.
 ;By the following observation, i find that it is 1.5 times faster to use 
 ;this improved version.
+;By skipping the even numbers, the amount of calculation time is reduced by almost half. 
+;If this (next) and (+ test-divisor 1) are compared, this new algorithms will be 2 times
+;faster. However, we have to take account of other procedures too, due to other procedures
+;it cannot be 2 times faster, therefore the computation time is a bit reduced which 
+;resulted 1.5 times.
 
 ;10000000019; 60
 ;10000000019; 90

@@ -33,3 +33,18 @@
         ((fermat-test n)
          (prime? n (- times 1)))
         (else #f)))
+
+(define (search-for-primes start-range end-range)
+  (if (even? start-range)
+      (search-for-primes (+ 1 start-range) end-range)
+      (cond ((> start-range end-range)
+             (newline) (display "done"))
+            (else (timed-prime-test start-range)
+                  (search-for-primes (+ 2 start-range) end-range)))))
+
+
+;with fermat test, it is so fast that even for 10000000019, the time returns 0 in my computer.
+;It return 0 even for 1000000000000000000000000000000000000000000000++. Therefore, I think
+;I cannot prove with numbers.
+;It is so hard to tell with number proof, but theoratically, fermat test would be much faster
+;for larger number, for smaller numbers, it would be more of less the same or even fermat test is slower.
