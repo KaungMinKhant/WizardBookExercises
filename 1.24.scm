@@ -44,7 +44,9 @@
 
 
 ;with fermat test, it is so fast that even for 10000000019, the time returns 0 in my computer.
-;It return 0 even for 1000000000000000000000000000000000000000000000++. Therefore, I think
-;I cannot prove with numbers.
-;It is so hard to tell with number proof, but theoratically, fermat test would be much faster
-;for larger number, for smaller numbers, it would be more of less the same or even fermat test is slower.
+;It return 0 even for 1000000000000000000000000000000000000000000000++.
+;I will explain theoratically only.
+;Since this has log(n), every time the number is increased 10 times, the computation time will be
+;increased by 1x. For normal prime test, it would increased by 3x. It does not matter that much
+;for small numbers. The larger the number, the bigger the time difference is and fermat test 
+;will be much faster.s
