@@ -14,8 +14,8 @@
 (define (wallis-product n)
   (define (term n)
     (* (/ (* 2 n)
-          (- (* 2 n) 1))
-       (/ (* 2 n)
+          (+ (* 2 n) 1))
+       (/ (+ (* 2 n) 2)
           (+ (* 2 n) 1))))
   (product term 1.0 inc n))
 
@@ -25,3 +25,5 @@
         result
         (iter (next a) (* a result))))
   (iter a 1))
+
+  ; pi = 3.142377365093871

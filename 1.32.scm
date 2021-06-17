@@ -22,3 +22,9 @@
 
 (define (product-iter term a next b)
   (accumulate-iter * 1 term a next b))
+
+(define (inc n) (+ n 1))
+(define (cube n) (* n n n))
+
+; it was not difficult to do the accumulate. I just need to translate the sum and sum-iter,
+; by using combiner and null-value in the place of + and 0.
