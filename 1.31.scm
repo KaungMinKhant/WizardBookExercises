@@ -27,3 +27,6 @@
   (iter a 1))
 
   ; pi = 3.142377365093871
+
+  ; I like the product factorial most because it can exactly represent 1 * 2 * 3 * n 
+  ; even in the line of code.
