@@ -5,10 +5,20 @@
         (if (predicate? a) (term a) null-value)
         (filtered-accumulate predicate? combiner null-value term (next a) next b))))
 
+(define (filtered-accumulate-iter predicate? combiner null-value term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (combiner result (if (predicate? a) (term a) null-value)))))
+  (iter a null-value))
+
 (define (inc n) (+ n 1))
 
 (define (sum-of-squares-prime a b)
   (filtered-accumulate prime? + 0 square a inc b))
+
+(define (sum-of-squares-prime-iter a b)
+  (filtered-accumulate-iter prime? + 0 square a inc b))
 
 (define (smallest-divisor n)
   (find-divisor-improved n 2))
@@ -23,8 +33,8 @@
 
 (define (next test-divisor)
   (if (= test-divisor 2)
-    3
-    (+ test-divisor 2)))
+      3
+      (+ test-divisor 2)))
 
 (define (prime? n)
   (= n (smallest-divisor n)))
