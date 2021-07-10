@@ -4,6 +4,12 @@
       (combiner (term a)
          (accumulate combiner null-value term (next a) next b))))
 
+(define (accumulate-new combiner null-value term a next b)
+  (if (> a b)
+      null-value
+      (combiner (accumulate-new combiner null-value term (next a) next b)
+         (term a))))
+
 (define (accumulate-iter combiner null-value term a next b)
   (define (iter a result)
     (if (> a b)
@@ -28,3 +34,6 @@
 
 ; it was not difficult to do the accumulate. I just need to translate the sum and sum-iter,
 ; by using combiner and null-value in the place of + and 0.
+
+
+
