@@ -6,3 +6,6 @@
 
 (newline)
 (display (((double (double double)) inc) 5))
+
+; (((double double) f) x)
+; ((double (double f)) x)
