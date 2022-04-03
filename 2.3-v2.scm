@@ -34,9 +34,13 @@
 (define (make-rect p1 p2)
   (cons p1 p2))
 
+(define (get-p1 r)
+  (car r))
+
+(define (get-p2 r)
+  (cdr r))
 ; if we get two points, we can make the rectangle out of it
 ; by creating x values and y values from those three points.
-
 ; the idea is as following
 ;Corner | x value | y value
 ;bottom left | min | min
@@ -44,12 +48,10 @@
 ;top left | min | max
 ;top right | max | max
 
-(define (get-point r xselector yselector)
-  (let ((p1 (car r))
-        (p2 (cdr r)))
-    (make-point (xselector (x-point p1) (x-point p2))
-                (yselector (y-point p1) (y-point p2)))))
 
+(define (get-point r xselector yselector)
+  (make-point (xselector (x-point (get-p1 r)) (x-point (get-p2 r)))
+              (yselector (y-point (get-p1 r)) (y-point (get-p2 r)))))
 (define (get-bottom-left r)
   (get-point r min min))
 
@@ -68,8 +70,12 @@
 (define (height-rect r)
   (abs (- (y-point (car r)) (y-point (cdr r)))))
 
-(define r1 (make-rect (make-point 3 2) (make-point 6 5)))
+(define r1 (make-rect (make-point 3 8) (make-point 6 -8)))
 
 (display "Rectangle 1: ") (newline)
 (display "Perimeter: ") (display (perimeter-rect r1)) (newline)
 (display "Area ") (display (area-rect r1)) (newline) (newline)
+(display "Bottom Left ") (display (get-bottom-left r1)) (newline) (newline)
+(display "Bottom Right ") (display (get-bottom-right r1)) (newline) (newline)
+(display "Top Left ") (display (get-top-left r1)) (newline) (newline)
+(display "Top Right ") (display (get-top-right r1)) (newline) (newline)
