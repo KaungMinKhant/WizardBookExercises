@@ -65,10 +65,10 @@
   (get-point r max max))
 
 (define (width-rect r)
-  (abs (- (x-point (car r)) (x-point (cdr r)))))
+  (abs (- (x-point (get-p1 r)) (x-point (get-p2 r)))))
 
 (define (height-rect r)
-  (abs (- (y-point (car r)) (y-point (cdr r)))))
+  (abs (- (y-point (get-p1 r)) (y-point (get-p2 r)))))
 
 (define r1 (make-rect (make-point 3 8) (make-point 6 -8)))
 
